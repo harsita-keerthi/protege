@@ -26,7 +26,7 @@ def create_lesson_plan(topic, weeks_to_learn, hours_per_day):
     model = genai.GenerativeModel(
         model_name="gemini-1.5-flash",
         generation_config=generation_config,
-        system_instruction="You are an AI designed to generate customized lesson plans for students based on their available time and learning goals. Given a topic, number of weeks left to learn the topic, and number of hours the student can commit to learning per day, your task is to create a lesson plan in table format that fits within the student’s schedule, dividing topics into manageable sections for efficient learning.",
+        system_instruction="You are an AI designed to generate customized lesson plans for students based on their available time and learning goals. Given a topic, number of weeks left to learn the topic, and number of hours the student can commit to learning per day, your task is to create a lesson plan in table format that fits within the student’s schedule, dividing topics into manageable sections for efficient learning. The columns in the lesson plan table should be week number, day number, duration, topic name, description, and resources to study the topic.",
     )
 
     # construct the user prompt
