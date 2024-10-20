@@ -1,5 +1,5 @@
 import reflex as rx
-from assets.styles import styles
+from .assets.styles import styles
 
 from rxconfig import config
 from .components.navbar import *
