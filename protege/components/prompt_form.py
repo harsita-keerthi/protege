@@ -68,8 +68,8 @@ def form_input1():
                         ),
                         spacing="4",
                         width="100%",
+                        padding="20px",
                     ),
-
                     rx.button("Submit", type="submit"),
                     width="100%",
                     align="center",
@@ -77,19 +77,22 @@ def form_input1():
                 on_submit=FormInputState.submit,
                 reset_on_submit=True,
             ),
-            rx.divider(),
+            # rx.divider(),
 
             # test output
-            rx.hstack(
-                rx.heading("Results:"),
-                rx.badge(
-                    FormInputState.res.to_string()
-                ),
-            ),
+            # rx.hstack(
+            #     rx.heading("Results:"),
+            #     rx.badge(
+            #         FormInputState.res.to_string()
+            #     ),
+            # ),
             align_items="center",
             width="100%",
+            padding="20px",  
+            # padding_bottom="20px", 
         ),
         width="50%",
+        padding="20px",
     )
 
 def get_res():

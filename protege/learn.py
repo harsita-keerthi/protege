@@ -22,7 +22,7 @@ def learn() -> rx.Component:
         navbar_user(), # navbar
         rx.color_mode.button(position="bottom-left"),
         rx.vstack( 
-            rx.heading("let's learn!", size="9", align="center"),
+            rx.heading("what do you want to learn?", size="9", align="center"),
             form_input1(),
 
             # styling
@@ -32,6 +32,8 @@ def learn() -> rx.Component:
             display="flex",
             flex_direction="column",
             min_height="85vh",
+            padding_bottom="220px",
+            padding_top="240px",
         ),
         learn_schedule(data)
         # rx.cond(
