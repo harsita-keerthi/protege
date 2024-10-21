@@ -45,3 +45,6 @@ def process():
 
         # Print the transcript
         CustomResponse.curr_feedback = generate_pointers(transcript)
+
+def get_feedback():
+    return CustomResponse.curr_feedback
