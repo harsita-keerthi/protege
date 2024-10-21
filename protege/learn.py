@@ -15,7 +15,6 @@ class State(rx.State):
     prompt_data = FormInputState.prompt_data
     def toggle_visibility(self):
         self.show = not self.show
-
 # lesson plan generation page
 def learn() -> rx.Component:
     return rx.fragment(
@@ -36,6 +35,7 @@ def learn() -> rx.Component:
             padding_top="240px",
         ),
         learn_schedule(data)
+        
         # rx.cond(
         #     State.show,
         #     learn_schedule(FormInputState.res),

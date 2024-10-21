@@ -3,6 +3,7 @@ from rxconfig import config
 from .components.navbar import *
 from server.transcribe import *
 import io
+from server.critique import *
 
 class State(rx.State):
     # Example of how you might process the file bytes before passing
@@ -29,6 +30,8 @@ class State(rx.State):
         # For example: transcribe(audio_file)
         process(audio_file, file_name)  # Call your processing/transcribing function
 
+    curr_feedback = ''
+
 def teach() -> rx.Component:
     return rx.fragment(
         navbar_user(),  # navbar
@@ -47,6 +50,8 @@ def teach() -> rx.Component:
                 "Submit", 
                 on_click=process()
             ),
+            organize_feedback(State.curr_feedback),
+            pro_con_chart(),
 
             # styling
             spacing="5",
@@ -57,5 +62,37 @@ def teach() -> rx.Component:
             min_height="85vh",
             padding_bottom="220px",
             padding_top="240px",
+            
         ),
     )
+
+def organize_feedback(response):
+    feedback = {
+        'positive': [],
+        'negative': [],
+        'review': [],
+    }
+    for i in State.curr_feedback['feedback']:
+        feedback[i[0]].append(i)
+        
+    print(feedback)
+    return feedback
+
+def create_feedback(feedback):
+    return rx.vstack(
+        rx.foreach(feedback, rx.card()),
+        width="100%"
+    )
+
+def pro_con_chart() -> rx.Component:
+    organize_feedback(State.curr_feedback)
+
+    return rx.hstack(
+        rx.foreach(
+            3, 
+            # create_feedback
+            rx.card()
+        ),
+        width="100%"
+    )
+    
